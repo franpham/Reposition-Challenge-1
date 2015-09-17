@@ -1,4 +1,5 @@
-var seats = [
+// var seats = [
+module.exports = { root: [
   {
     name : "Nolan",
     original_position : 0
@@ -43,6 +44,7 @@ var seats = [
     name : "Naomi",
     original_position : 10
   }
-];
+  ] };
+// ];
 
-module.exports = seats;
+// module.exports = seats;
