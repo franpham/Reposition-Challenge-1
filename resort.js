@@ -1,7 +1,7 @@
 
 // var seats = require('./seats.js').root;    // uncomment this if running in node terminal;
-var list = new Array(seats.length);       // holds students in the new list;
-var dict = [];                            // holds violators of the reshuffle rules;
+var list = new Array(seats.length);       // holds people in the new shuffled order;
+var dict = [];                            // holds violators of the shuffle rules;
 
 function shuffle(node, index) {
   // increment by 1 to check next position; use modulus to keep index within array.length;
@@ -15,7 +15,7 @@ function resort() {
   for (var i = 0; i < list.length; i++) {
     list[i] = null;
   }
-  for (var i = 0; i < seats.length; i++) {
+  for (var i = 0; i < seats.length; i++) {    // IMPORTANT: +i to shuffle each element further away;
     shuffle(seats[i], seats[i].original_position + 1 + i);
   }
 }
@@ -23,7 +23,7 @@ function resort() {
 // ---------------------------            FUNCTIONS NEEDED FOR TESTING BELOW          ------------------------------
 
 function check(node, index) {
-  var leftOk = rightOk = false;   // must check neighbors to both left && right in new list;
+  var leftOk = rightOk = false;   // check NEW left && right neighbors of current node;
   if (index > 0) {
     leftOk = list[index - 1] === null ? true : (wasStranger(list[index - 1], node.original_position) ? true : false);
   } else {
@@ -34,14 +34,14 @@ function check(node, index) {
   } else {
     rightOk = true;
   }
-  if (!leftOk || !rightOk)    // node is a violater if either leftOk || rightOk are not true;
+  if (!leftOk || !rightOk)    // node is a violater if either leftOk || rightOk is not true;
     dict.push(node);
 }
 
-// must check neighbors to both left && right in old list;
-function wasStranger(student, oldIndex) {
-  var leftOk = oldIndex === 0 ? true : seats[oldIndex - 1].name !== student.name;
-  var rightOk = oldIndex === seats.length - 1 ? true : seats[oldIndex + 1].name !== student.name;
+// check NEW neighbors of current person to both left && right neighbors in OLD list;
+function wasStranger(person, oldIndex) {
+  var leftOk = oldIndex === 0 ? true : seats[oldIndex - 1].name !== person.name;
+  var rightOk = oldIndex === seats.length - 1 ? true : seats[oldIndex + 1].name !== person.name;
   return leftOk && rightOk;
 }
 
