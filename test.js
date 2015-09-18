@@ -5,7 +5,10 @@ describe('Resort', function() {
     resort();
     for (var i = 0; i < list.length; i++) {
       check(list[i]);   // check each node in new list for old neighbors;
-      expect(getOldNeighbors(list[i].original_position)).to.not.equal(getNewNeighbors(i));
+      var oldPeeps = getOldNeighbors(list[i].original_position);
+      var newPeeps = getNewNeighbors(i);
+      $('#results').append($('<div />').text(i + '. ' + list[i].name + ': ')).append($('<div />').text(oldPeeps)).append($('<div />').text(newPeeps));
+      expect(oldPeeps).to.not.equal(newPeeps);
     };
     expect(dict.length).to.equal(0);
   });   // dict holds the neighbor violators
