@@ -1,5 +1,5 @@
 
-var seats = require('./seats.js').root;
+// var seats = require('./seats.js').root;
 var list = new Array(seats.length);
 var dict = [];
 
@@ -40,6 +40,16 @@ function wasStranger(student, oldIndex) {
   var leftOk = oldIndex === 0 ? true : seats[oldIndex - 1].name !== student.name;
   var rightOk = oldIndex === seats.length - 1 ? true : seats[oldIndex + 1].name !== student.name;
   return leftOk && rightOk;
+}
+
+function getOldNeighbors(index) {
+  return 'left neighbor: ' + (index > 0 ? seats[index - 1].name : '')
+    + ', right neighbor: ' + (index < seats.length - 1 ? seats[index + 1].name : '');
+}
+
+function getNewNeighbors(index) {
+  return 'left neighbor: ' + (index > 0 ? list[index - 1].name : '')
+    + ', right neighbor: ' + (index < list.length - 1 ? list[index + 1].name : '');
 }
 
 for (var i = 0; i < seats.length; i++) {

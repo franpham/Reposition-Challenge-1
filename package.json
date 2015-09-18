@@ -1,0 +1,23 @@
+{
+  "name": "reposition-challenge-1",
+  "version": "1.0.0",
+  "description": "_if you plan on doing both levels, can you do level 2 first?_",
+  "main": "resort.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franpham/Reposition-Challenge-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/franpham/Reposition-Challenge-1/issues"
+  },
+  "homepage": "https://github.com/franpham/Reposition-Challenge-1#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.3.2"
+  }
+}
